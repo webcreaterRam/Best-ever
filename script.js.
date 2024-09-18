@@ -1,0 +1,32 @@
+[2:07 pm, 18/9/2024] Maryan: document.addEventListener("DOMContentLoaded", function() {
+    console.log("Animation started");
+
+    const image = document.getElementById('animatedImage');
+    let isZoomingIn = true;
+    let frame = 0;
+
+    // Main animation loop
+    function animate() {
+        if (frame % 100 === 0) {
+            console.log("Frame: ", frame); // This will display frame count in the console
+        }
+
+        // Animate the image's opacity to create a fading effect
+        if (isZoomingIn) {
+            image.style.opacity = parseFloat(image.style.opacity) - 0.01;
+        } else {
+            image.style.opacity = parseFloat(image.style.opacity) + 0.01;
+        }
+
+        if (image.style.opacity <= 0.5 || image.style.opacity >= 1) {
+            isZoomingIn = !isZoomingIn; // Reverse direction when limits reached
+        }
+
+        frame++;
+        requestAnimationFrame(animate); // Loop the animation
+    }
+
+    image.style.opacity = 1; // Start with full opacity
+    animate(); // Start the loop
+});
+[2:19 pm, 18/9/2024] Maryan: 
